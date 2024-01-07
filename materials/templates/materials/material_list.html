@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="col-12 mb-5">
+        <a href="{% url 'materials:create' %}" class="btn btn-outline-primary">Добавить материал</a>
+    </div>
+    {% for object in object_list %}
+
+        <div class="col-4 mt-5">
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ object|title }}
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{% url 'materials:detail' object.pk %}" type="button"
+                               class="btn btn-sm btn-outline-secondary">View</a>
+                            <a href="{% url 'materials:update' object.pk %}" type="button"
+                               class="btn btn-sm btn-outline-secondary">Edit</a>
+                            <a href="{% url 'materials:delete' object.pk %}" type="button"
+                               class="btn btn-sm btn-outline-danger">Delete</a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    {% endfor %}
+{% endblock %}
