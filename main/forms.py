@@ -17,7 +17,7 @@ class StudentForm(StyleFormMixin, forms.ModelForm):
         exclude = ('is_active',)
 
     def clean_email(self):
-        cleaned_data = self.cleaned_data['email'].lower()
+        cleaned_data = self.cleaned_data['email']
         if 'sky.pro' not in cleaned_data:
             raise ValidationError('Почта должна относиться к организации')
         return cleaned_data
